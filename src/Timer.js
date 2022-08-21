@@ -55,16 +55,23 @@ export default function Timer() {
     seconds = seconds < 10 ? '0' + seconds : seconds;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     setTime(minutes + ':' + seconds)
+    
     if(timer === 0 && !isBreakTime){//end of session
-        beep()
-        setBreakTime(true)
-        setLabel("Break")// change label
-        setTimer(breakLength * 60)// set timer to break length
+        setTimeout(() => {
+            beep()
+            setBreakTime(true)
+            setLabel("Break")// change label
+            setTimer(breakLength * 60)// set timer to break length
+        }, 1000);
+        
     }else if(timer === 0 && isBreakTime){//end of break
-        beep()
-        setBreakTime(false)
-        setLabel("Session")// change label
-        setTimer(sessionLength * 60)// set timer to break length
+        setTimeout(() => {
+            beep()
+            setBreakTime(false)
+            setLabel("Session")// change label
+            setTimer(sessionLength * 60)// set timer to break length
+        }, 1000);
+        
     }
   }, [timer]);
 
